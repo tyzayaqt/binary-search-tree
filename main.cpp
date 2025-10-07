@@ -16,6 +16,8 @@ struct BSTNode {
 
 void insertRecursive(BSTNode*& root, int value);
 void insertIterative(BSTNode*& root, int value);
+bool searchRecursive(BSTNode* root, int key);
+bool searchIterative(BSTNode* root, int key);
 
 
 int main() {
@@ -72,3 +74,18 @@ bool searchRecursive(BSTNode* root, int key) {
     } else {
         return searchRecursive(root->right, key);
     }
+}
+
+bool searchIterative(BSTNode* root, int key) {
+    if (root == nullptr) { return false; }
+
+    BSTNode* cur = root;
+    while (cur) {
+        if(key == cur->data) {
+            return true;
+        }
+        if (key < cur->data) { cur = cur->left;} 
+        else { cur = cur->right; }
+    }
+    return false;
+}
